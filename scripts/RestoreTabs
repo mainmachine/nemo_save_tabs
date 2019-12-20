@@ -21,9 +21,13 @@ module Nautilus
     end
 
     def load
-      @config = @config.merge(YAML.load_file(
-                                "#{ENV['HOME']}/.config/nautilus/save_tabs"
-      ))
+      begin
+	    @config = @config.merge(YAML.load_file(
+		                          "#{ENV['HOME']}/.config/nautilus/save_tabs"
+		))
+      rescue Errno::ENOENT
+        return
+      end  
     end
   end
   # restore tabs
@@ -89,6 +93,7 @@ module Nautilus
 
     def initialize
       @config = Config.new
+      @config.load
       uris = load_tabs
       open_uri(uris.shift)
       uris.each { |uri| open_tab(uri) }
