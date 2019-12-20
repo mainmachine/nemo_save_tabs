@@ -22,15 +22,20 @@ module Nautilus
     end
 
     def load
-      @config = @config.merge(YAML.load_file(
-                                "#{ENV['HOME']}/.config/nautilus/save_tabs"
-      ))
+      begin
+        @config = @config.merge(YAML.load_file(
+		                          "#{ENV['HOME']}/.config/nautilus/save_tabs"
+	    ))
+      rescue Errno::ENOENT
+        return
+      end 		     
     end
   end
   # get URIs
   class GetURIs
     def initialize
       @config = Config.new
+      @config.load
       @uri = ENV['NAUTILUS_SCRIPT_CURRENT_URI']
       @selected_uris = ENV['NAUTILUS_SCRIPT_SELECTED_URIS']
       socket
