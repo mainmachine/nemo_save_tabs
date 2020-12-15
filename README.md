@@ -1,13 +1,13 @@
-# nautilus_save_tabs
+# nemo_save_tabs
 
-Nautilus scripts to save/restore tabs
+Nemo scripts to save/restore tabs
 
 * SaveTabs saves URIs of tabs
 * GetURIs is a sub script used by SaveTabs
 * RestoreTabs restores saved tabs
 
 ## requirements
-* nautilus
+* nemo
 * ruby
 * xdotool
 * zenity
@@ -28,15 +28,15 @@ if you need to use diffrent configuration from the default one,
 | shortcut_geturis | shortcut key to invoke `GetURIs` script | "control+g" |
 | sleep_time_restore | sleep time after each key input by xdotool (seconds) in RestoreTabs | 0.3 |
 | select_uri_delay | delay between keystrokes to select uri in RestoreTabs (milliseconds) | 100 |
-| save_tabs_path | file to save tabs | ENV['HOME'] + '/.local/share/nautilus/tabs' |
-| socket_path | socket used by SaveTabs and GetURIs | '/tmp/nautilus_' + ENV['USER'] + '.socket' |
+| save_tabs_path | file to save tabs | ENV['HOME'] + '/.local/share/nemo/tabs' |
+| socket_path | socket used by SaveTabs and GetURIs | '/tmp/nemo_' + ENV['USER'] + '.socket' |
 
 #### sleep and delay
 
 increase `sleep_time_*` and/or `select_uri_delay` if the script is unstable.
 
 ### accels
-modify scripts-accels to configure keyboard shortcuts for Nautilus >= 3.20
+modify scripts-accels to configure keyboard shortcuts for Nemo >= 3.20
 
 ## Installation
 `bundle install --path vendor/bundle` and `bundle exec rake install` will install everything.
@@ -54,7 +54,7 @@ scripts have been tested with Ubuntu 17.04 and Ruby 2.4.1.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/susurri/nautilus_save_tabs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mainmachine/nemo_save_tabs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
